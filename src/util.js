@@ -130,7 +130,9 @@ export async function onSubmit ($event) {
           if (res.success) {
             if (typeof this.success === 'function')
               this.success(res, r) // throw an error to pass the notification
-            showNotify('success', 'SUCCESS', typeof (res.success) === 'string' && res.success ? res.success : 'Success')
+            if (typeof (res.success) === 'string') {
+              showNotify('success', 'SUCCESS', res.success)
+            }
           } else {
             for (const i in res) {
               showNotify(('' + i).toLowerCase(), ('' + i).toUpperCase(), '' + res[i])
@@ -139,7 +141,7 @@ export async function onSubmit ($event) {
         }
       } catch (e) {}
     } catch (e) {
-      console.error('auto-form', e)
+      console.error('vue-auto-form', e)
       if (e.message) {
         showNotify('error', 'ERROR', e.message)
       }
