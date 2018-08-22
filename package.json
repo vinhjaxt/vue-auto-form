@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "auto ajax form for Vue.js",
   "main": "dist/vue2-auto-form.js",
-  "module": "dist/vue2-auto-form.js",
+  "module": "dist/vue2-auto-form.esm.js",
   "files": [
     "dist"
   ],
@@ -15,7 +15,9 @@
   ],
   "scripts": {
     "build:dev": "rollup -wm -c",
-    "build": "rollup -c",
+    "build": "npm run build:umd && npm run build:es",
+    "build:umd": "rollup -c rollup.config.js",
+    "build:es": "rollup -c rollup.config.es.js",
     "lint": "eslint src",
     "test": "parcel example/index.html --out-dir example/dist"
   },
