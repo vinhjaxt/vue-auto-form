@@ -23,12 +23,12 @@ export default {
   output: {
     exports: 'named',
     banner: `/**
-  * vue-auto-form v${version}
+  * vue2-auto-form v${version}
   * (c) ${(new Date()).getFullYear()} vinhjaxt
   * @license MIT
   */
    `,
-    file: `dist/vue-auto-form.js`,
+    file: `dist/vue2-auto-form.js`,
     format: 'umd',
     module: 'VueAutoForm',
     sourcemap: false,

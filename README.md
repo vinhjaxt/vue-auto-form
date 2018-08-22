@@ -1,16 +1,15 @@
-# vue-auto-form
-
-Auto submit form by fetch api
+# vue2-auto-form
+Zero data model, auto submit form by fetch api
 
 # install
-`npm i -S vue-auto-form`
+`npm i -S vue2-auto-form`
 
 # usage
 
 - main.js
 ```js
 import Vue from 'vue'
-import VueAutoForm form 'vue-auto-form'
+import VueAutoForm form 'vue2-auto-form'
 Vue.use(VueAutoForm)
 ```
 

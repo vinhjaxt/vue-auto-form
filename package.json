@@ -1,9 +1,9 @@
 {
-  "name": "vue-auto-form",
+  "name": "vue2-auto-form",
   "version": "1.0.0",
   "description": "auto ajax form for Vue.js",
-  "main": "dist/vue-auto-form.js",
-  "module": "dist/vue-auto-form.js",
+  "main": "dist/vue2-auto-form.js",
+  "module": "dist/vue2-auto-form.js",
   "files": [
     "dist"
   ],
