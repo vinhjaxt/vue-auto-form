@@ -51,6 +51,20 @@ export function getFormData (form) {
   }
   return data
 }
+
+/*
+// fix remove on native DOM
+Element.prototype.remove = function () {
+  this.parentElement.removeChild(this)
+}
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function () {
+  for (var i = this.length - 1; i >= 0; i--) {
+    if (this[i] && this[i].parentElement) {
+      this[i].parentElement.removeChild(this[i])
+    }
+  }
+}
+// */
 export function showNotify (type, title, text) {
   const n = new PNotify({
     title,
@@ -60,16 +74,18 @@ export function showNotify (type, title, text) {
       desktop: false
     }
   })
+  /*
   const el = n.get()
   if (window.jQuery && (el instanceof window.jQuery)) {
     el.click(function (e) {
       window.jQuery(this).remove()
     })
   } else if (el instanceof Node) {
-    el.addEventListener('click', e => {
-      el.remove()
+    el.addEventListener('click', function (e) {
+      el.parentElement.removeChild(el)
     })
   }
+  */
 }
 export async function onSubmit ($event) {
   const $form = $event.target
