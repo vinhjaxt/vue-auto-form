@@ -18,7 +18,6 @@
     "build": "npm run build:umd && npm run build:es",
     "build:umd": "rollup -c rollup.config.js",
     "build:es": "rollup -c rollup.config.es.js",
-    "lint": "eslint src",
     "test": "parcel example/index.html --out-dir example/dist"
   },
   "repository": {

@@ -5,8 +5,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html",
-    "lint": "eslint src"
+    "build": "parcel build index.html"
   },
   "dependencies": {
     "vue": "^2.5.17"
