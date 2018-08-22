@@ -38,6 +38,44 @@ export default {
 </script>
 ```
 
+- server.js
+```js
+...
+// expressjs
+app.use(bodyParser.urlencoded())
+app.use(bodyParser.json())
+app.post('/publish', (req, res) => {
+  // validate user data
+  // do something
+  if (err) {
+    res.json({error: 'Something broke, try again.'})
+    return
+  }
+  res.json({success: 'Successfully!'})
+})
+...
+```
+or PHP:
+- publish.php
+```php
+<?php
+// dont forget this line
+header('Content-Type: application/json');
+if($_SERVER['REQUEST_METHOD'] !== 'POST'){
+  // method not allowed
+  echo json_encode(['error' => 'Method not allowed']);
+  exit(0);
+}
+// validate $_POST
+// do stuff
+if($error){
+  echo json_encode(['error' => 'Something wrong. Pls try again.']);
+  exit(0);
+}
+echo json_encode(['success' => 'Okay, you got me.']);
+exit(0);
+```
+
 Checkout [example](/example)
 
 # license

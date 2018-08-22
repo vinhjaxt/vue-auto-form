@@ -72,11 +72,11 @@ export function showNotify (type, title, text) {
   }
 }
 export async function onSubmit ($event) {
-  const data = getFormData($event.target)
-  const validator = this.validator
-  if (typeof validator === 'function') {
+  const $form = $event.target
+  const data = getFormData($form)
+  if (typeof this.validator === 'function') {
     try {
-      let ret = validator(data)
+      let ret = this.validator(data, $form)
       if (typeof ret.catch === 'function') {
         // promise, async vailidator
         ret = await ret
@@ -90,7 +90,7 @@ export async function onSubmit ($event) {
           // validator return array set to showNotify
           showNotify(...ret)
         } else if (!ret.success) {
-          // validator return {success: true} - OK, {error: 'Show this text'} - show an error, {notice: 'Show notice} - show a notice
+          // validator return {success: "Successfull!"} - show text, {error: 'Show this text'} - show an error, {notice: 'Show notice'} - show a notice
           for (const i in ret) {
             showNotify(('' + i).toLowerCase(), ('' + i).toUpperCase(), '' + ret[i])
           }
@@ -126,7 +126,7 @@ export async function onSubmit ($event) {
   }
   args[1].headers = headers
   if (typeof this.beforeSend === 'function')
-    this.beforeSend(args)
+    this.beforeSend(args, $form)
   let res, r
   try {
     r = await fetch(...args)
@@ -136,7 +136,7 @@ export async function onSubmit ($event) {
         if (res && res instanceof Object) {
           if (res.success) {
             if (typeof this.success === 'function')
-              this.success(res, r) // throw an error to pass the notification
+              this.success(res, r, $form) // throw an error to pass the notification
             if (typeof (res.success) === 'string') {
               showNotify('success', 'SUCCESS', res.success)
             }
@@ -146,14 +146,17 @@ export async function onSubmit ($event) {
             }
           }
         }
-      } catch (e) {}
+      } catch (e) {
+        console.error('vue2-auto-form', e)
+      }
     } catch (e) {
-      console.error('vue-auto-form', e)
+      // json error
+      console.error('vue2-auto-form', e)
       if (e.message) {
         showNotify('error', 'ERROR', e.message)
       }
       if (typeof this.error === 'function')
-        this.error(res, r)
+        this.error(res, r, $form)
     }
   } catch (e) {
     // fetch error
@@ -161,8 +164,8 @@ export async function onSubmit ($event) {
       showNotify('error', 'ERROR', e.message)
     }
     if (typeof this.error === 'function')
-      this.error(e, r)
+      this.error(e, r, $form)
   }
   if (typeof this.complete === 'function')
-    this.complete(res, r)
+    this.complete(res, r, $form)
 }

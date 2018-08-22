@@ -18,13 +18,10 @@ export default {
       required: false
     },
     json: {
+      // true or false or "false"
       default: false
     },
     validator: {
-      type: Function,
-      required: false
-    },
-    httpagent: {
       type: Function,
       required: false
     },
