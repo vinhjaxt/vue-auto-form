@@ -7,6 +7,12 @@
   "files": [
     "dist"
   ],
+  "keywords": [
+    "vue",
+    "vue2",
+    "auto-form",
+    "auto form submit"
+  ],
   "scripts": {
     "build:dev": "rollup -wm -c",
     "build": "rollup -c",
