@@ -1,5 +1,5 @@
 # vue2-auto-form
-Zero data model, auto submit form by fetch api
+Zero model data (variables), auto submit form use fetch api
 
 # install
 `npm i -S vue2-auto-form`
@@ -11,6 +11,7 @@ Zero data model, auto submit form by fetch api
 import Vue from 'vue'
 import VueAutoForm form 'vue2-auto-form'
 Vue.use(VueAutoForm)
+...
 ```
 
 - App.vue
@@ -18,6 +19,7 @@ Vue.use(VueAutoForm)
 ```html
 <template>
   <auto-form method="post" action="/publish" :success="onSuccess">
+    <!-- no v-model anymore -->
     <textarea name="txt">
     Hello world
     </textarea>
@@ -30,10 +32,13 @@ export default {
     onSuccess(b, r){
       console.log(b, r)
     }
+    ...
   }
 }
 </script>
 ```
+
+Checkout [/example](example)
 
 # license
 - MIT

@@ -60,9 +60,16 @@ export function showNotify (type, title, text) {
       desktop: false
     }
   })
-  n.get().addEventListener('click', function (e) {
-    n.remove()
-  })
+  const el = n.get()
+  if (window.jQuery && (el instanceof window.jQuery)) {
+    el.click(function (e) {
+      window.jQuery(this).remove()
+    })
+  } else if (el instanceof Node) {
+    el.addEventListener('click', e => {
+      el.remove()
+    })
+  }
 }
 export async function onSubmit ($event) {
   const data = getFormData($event.target)
