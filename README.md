@@ -2,7 +2,7 @@
 Zero model data (variables), auto submit form use fetch api
 
 # install
-`npm i -S vue2-auto-form`
+`npm i -D vue2-auto-form`
 
 # usage
 
@@ -38,7 +38,7 @@ export default {
 </script>
 ```
 
-Checkout [/example](example)
+Checkout [example](/example)
 
 # license
 - MIT
