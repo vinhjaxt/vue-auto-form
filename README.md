@@ -2,7 +2,7 @@
 Zero model data (variables), auto submit form use fetch api
 
 # Install
-`npm i -D vue2-auto-form`
+`npm i -S vue2-auto-form`
 
 # Usage
 
